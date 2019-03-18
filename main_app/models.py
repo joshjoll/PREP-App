@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 
 RATING = (
@@ -16,11 +16,9 @@ RATING = (
 class Project(models.Model):
     cohort_date = models.DateField('project date')
     name = models.CharField(max_length = 100)
-    image = models.CharField(max_length = 200)
+    # image = models.CharField(max_length = 200)
     description = models.TextField(max_length = 250)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     role = models.TextField(max_length = 100)
-    technology = models.ForeignKey(Technology, on_delete = models.CASCADE)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
@@ -37,7 +35,7 @@ class Project(models.Model):
 
     # change the default sort
     class Meta:
-        ordering = ['-date']
+        ordering = ['-cohort_date']
 
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
@@ -70,9 +68,9 @@ class User(models.Model):
     last = models.CharField(max_length = 100)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
-    spetialty = models.CharField(max_length = 100)
-    cohort_date = models.DateField('project date')
-    projects = models.ManyToManyField(Project)
+    specialty = models.CharField(max_length = 100)
+    cohort_date = models.DateField('cohort date')
+    project = models.ManyToManyField(Project)
     git_hub_link = models.CharField(max_length = 250)
     linkedin_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
