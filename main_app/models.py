@@ -32,6 +32,9 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'project_id': self.id})
 
+    def __str__(self):
+        return f"Image for project_id: {self.project_id} @{self.url}"
+
     # change the default sort
     class Meta:
         ordering = ['-date']
@@ -50,10 +53,17 @@ class Review(models.Model):
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.get_rating_display()} on {self.review}"
+
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'image_id': self.id})
     
 class User(models.Model):
     first = models.CharField(max_length = 100)
@@ -66,3 +76,6 @@ class User(models.Model):
     git_hub_link = models.CharField(max_length = 250)
     linkedin_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'user_id': self.id})
