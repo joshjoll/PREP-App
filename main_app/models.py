@@ -16,8 +16,13 @@ RATING = (
 class Project(models.Model):
     cohort_date = models.DateField('project date')
     name = models.CharField(max_length = 100)
+<<<<<<< HEAD
     description = models.TextField(max_length = 250)
     user = models.ManyToManyField(User)
+=======
+    # image = models.CharField(max_length = 200)
+    description = models.TextField(max_length = 250)
+>>>>>>> cc62cd94882b03847c4b2e25a3a4f2779bfc7e94
     role = models.TextField(max_length = 100)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
@@ -34,8 +39,13 @@ class Project(models.Model):
         return f"Image for project_id: {self.project_id} @{self.url}"
 
     # change the default sort
+<<<<<<< HEAD
     # class Meta:
     #     ordering = ['-date']
+=======
+    class Meta:
+        ordering = ['-cohort_date']
+>>>>>>> cc62cd94882b03847c4b2e25a3a4f2779bfc7e94
 
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
@@ -67,8 +77,14 @@ class User(models.Model):
     last = models.CharField(max_length = 100)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
+<<<<<<< HEAD
     spetialty = models.CharField(max_length = 100)
     cohort_date = models.DateField('project date')
+=======
+    specialty = models.CharField(max_length = 100)
+    cohort_date = models.DateField('cohort date')
+    project = models.ManyToManyField(Project)
+>>>>>>> cc62cd94882b03847c4b2e25a3a4f2779bfc7e94
     git_hub_link = models.CharField(max_length = 250)
     linkedin_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
