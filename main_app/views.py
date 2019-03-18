@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic import ListView, DetailView
+#maybe don't need
+from django import forms
 #Auth related imports
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -61,6 +63,21 @@ class Profile(DetailView):
     model = User
 # Loads sign up page
 # CBV
+
+# class UserCreateForm(UserCreationForm):
+#     extra_field = forms.CharField(required=True)
+#
+#     class Meta:
+#         model = User
+#         fields = ("andrey",)
+#
+#     def save(self, commit=True):
+#         user = super(UserCreateForm, self).save(commit=False)
+#         user.extra_field = self.cleaned_data["extra_field"]
+#         if commit:
+#             user.save()
+#         return user
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
