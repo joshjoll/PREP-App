@@ -44,7 +44,8 @@ class Technology(models.Model):
 class Review(models.Model):
     review = models.TextField(max_length = 250)
     rating = models.IntegerField(
-    choices = RATING,
+        max_length = 1,
+        choices = RATING,
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
