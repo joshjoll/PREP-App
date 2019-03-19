@@ -23,7 +23,7 @@ class Project(models.Model):
     deployed_app_link = models.CharField(max_length = 250)
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk':self.id})
+        return reverse('technology', kwargs={'pk':self.id})
 
     def __str__(self):
         return self.name
@@ -37,6 +37,9 @@ class Technology(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('image', kwargs={'pk':self.id})
+
 
 class Review(models.Model):
     review = models.TextField(max_length = 250)
@@ -44,6 +47,8 @@ class Review(models.Model):
         choices = RATING,
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk':self.id})
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"
