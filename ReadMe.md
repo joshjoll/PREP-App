@@ -32,8 +32,8 @@ Pitch your project to the class first thing Friday with a [pitch deck](https://p
 ## Here are some references:
 
 [Team Workflow Video](https://www.youtube.com/watch?v=oFYyTZwMyAg)
-[The GitHub Flow] (https://guides.github.com/introduction/flow/Understanding) 
-[Cheatsheet in Class Repo] (https://git.generalassemb.ly/WDI-CC/WDI-CC-6/blob/master/resources/git_workflow_team_cheatsheet.md)
+[The GitHub Flow](https://guides.github.com/introduction/flow/Understanding) 
+[Cheatsheet in Class Repo](https://git.generalassemb.ly/WDI-CC/WDI-CC-6/blob/master/resources/git_workflow_team_cheatsheet.md)
 
 ## Your app must:
 
