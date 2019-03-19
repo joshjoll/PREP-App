@@ -31,7 +31,7 @@ Pitch your project to the class first thing Friday with a pitch deck that includ
 ## Manage team contributions and collaboration using Git, GitHub and a standard team work-flow. 
 ## Here are some references:
 
-(https://www.youtube.com/watch?v=oFYyTZwMyAg "Team Workflow Video")
+[Team Workflow Video](https://www.youtube.com/watch?v=oFYyTZwMyAg)
 Understanding the GitHub Flow
 Cheatsheet in Class Repo
 Present the app at the end of the sprint as a team.
