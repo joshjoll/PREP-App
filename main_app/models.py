@@ -22,15 +22,11 @@ class Project(models.Model):
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
 
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk':self.id})
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'project_id': self.id})
-
-    # def __str__(self):
-        # return f"Image for project_id: {self.project_id} @{self.url}"
 
     class Meta:
         ordering = ['-cohort_date']
