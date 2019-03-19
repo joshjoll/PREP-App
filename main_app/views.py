@@ -32,13 +32,23 @@ class Project_Detail(DetailView):
 class New_Project(CreateView):
     model = Project
     fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+
+
+
+class Add_Technology(CreateView):
+    model = Technology
+    fields= '__all__'
+    success_url = '/projects/<int:project_id>/image/'
+class Add_Image(CreateView):
+    model = Project
+    fields= '__all__'
+    success_url = '/projects/<int:project_id>'
 # Loads page to update project. Limit to logged in
 # CBV
 class Update_Project(UpdateView):
     model = Project
     fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+    success_url = '/projects/<int:project_id>'
 
 #REVIEW RELATED VIEWS
 
