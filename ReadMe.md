@@ -21,7 +21,7 @@ Working in a team requires more upfront planning to ensure the team is "on the s
 
 ## Your team must:
 
-Pitch your project to the class first thing Friday with a pitch deck that includes:
+Pitch your project to the class first thing Friday with a [pitch deck] (https://pitchdeck.improvepresentation.com/what-is-a-pitch-deck) that includes:
 
 - The application name.
 - Your team members and their roles.
@@ -32,9 +32,8 @@ Pitch your project to the class first thing Friday with a pitch deck that includ
 ## Here are some references:
 
 [Team Workflow Video](https://www.youtube.com/watch?v=oFYyTZwMyAg)
-Understanding the GitHub Flow
-Cheatsheet in Class Repo
-Present the app at the end of the sprint as a team.
+[The GitHub Flow] (https://guides.github.com/introduction/flow/Understanding) 
+[Cheatsheet in Class Repo] (https://git.generalassemb.ly/WDI-CC/WDI-CC-6/blob/master/resources/git_workflow_team_cheatsheet.md)
 
 ## Your app must:
 
@@ -47,3 +46,35 @@ Be deployed online using Heroku.
 ### The app may optionally:
 
 Consume data from a third-party API
+
+## Suggested Ways to Get Started
+
+### Identify roles on the team, which may be:
+
+#### Scrum Master: 
+          the leader of the Agile processes (user stories, stand-ups, etc.) and manager of Trello.
+#### GitHub Manager: 
+          the primary person for managing the repo and GitHub team workflow (merging pull requests, etc.).
+#### Documenter: 
+          the person in charge of the README, etc.
+#### API Manager: 
+          the person in charge of researching, registering with, etc. APIs.
+#### Designer: 
+          the person in charge of UI design/layout and styling.
+#### Database manager: 
+          this person will be in charge of creating and managing the models and their relationships.
+
+#### You don't have to formally fulfill any of the above roles! They are only listed to provide guidance.
+
+
+### Read the docs for whatever technologies / frameworks / API’s you use. Definitely
+
+Be consistent with your code style. You're working in teams, but you're only making one app per team. Make sure it looks like a unified effort.
+
+### Do your best to have only one dev working on a certain file between commits. This will avoid merge conflicts. This is another reason to separate responsibilities between team members.
+
+Commit early, commit often. Don’t be afraid to break something because you can always go back in time to a previous version.
+
+Pair programming can be a great way for team members to share knowledge and contribute to the project.
+
+Consider following a [Mob Programming] (https://en.wikipedia.org/wiki/Mob_programming) approach where the team is always developing together on a single computer. Read this [post] (https://underthehood.meltwater.com/blog/2016/06/01/mob-programming/) for more information.
