@@ -52,22 +52,22 @@ Consume data from a third-party API
 ### Identify roles on the team, which may be:
 
 #### Scrum Master: 
-          the leader of the Agile processes (user stories, stand-ups, etc.) and manager of Trello.
+   the leader of the Agile processes (user stories, stand-ups, etc.) and manager of Trello.
 #### GitHub Manager: 
-          the primary person for managing the repo and GitHub team workflow (merging pull requests, etc.).
+   the primary person for managing the repo and GitHub team workflow (merging pull requests, etc.).
 #### Documenter: 
-          the person in charge of the README, etc.
+   the person in charge of the README, etc.
 #### API Manager: 
-          the person in charge of researching, registering with, etc. APIs.
+   the person in charge of researching, registering with, etc. APIs.
 #### Designer: 
-          the person in charge of UI design/layout and styling.
+   the person in charge of UI design/layout and styling.
 #### Database manager: 
-          this person will be in charge of creating and managing the models and their relationships.
+   this person will be in charge of creating and managing the models and their relationships.
 
 #### You don't have to formally fulfill any of the above roles! They are only listed to provide guidance.
 
 
-### Read the docs for whatever technologies / frameworks / API’s you use. Definitely
+### Read the docs for whatever technologies / frameworks / API’s you use. Definitely!
 
 Be consistent with your code style. You're working in teams, but you're only making one app per team. Make sure it looks like a unified effort.
 
@@ -77,4 +77,4 @@ Commit early, commit often. Don’t be afraid to break something because you can
 
 Pair programming can be a great way for team members to share knowledge and contribute to the project.
 
-Consider following a [Mob Programming] (https://en.wikipedia.org/wiki/Mob_programming) approach where the team is always developing together on a single computer. Read this [post] (https://underthehood.meltwater.com/blog/2016/06/01/mob-programming/) for more information.
+Consider following a [Mob Programming](https://en.wikipedia.org/wiki/Mob_programming) approach where the team is always developing together on a single computer. Read this [post](https://underthehood.meltwater.com/blog/2016/06/01/mob-programming/) for more information.
