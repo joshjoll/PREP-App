@@ -16,8 +16,10 @@ from .models import Project, Technology, Review, Image, User
 
 #PROJECT RELATED VIEWS
 # Display Landing Page
-def landing(request):
-    return render(request, 'landing.html')
+def home(request):
+    return render(request, 'home.html')
+def about(request):
+    return render(request, 'about.html')
 # Display Index Page of all projects
 class Index(ListView):
     model = Project

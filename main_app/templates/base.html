@@ -14,7 +14,7 @@
 <body>
   <header>
     <ul class="header">
-      <li class="header"><a href="#" class="header" id="homeLogo">Home Logo</a></li><!--change href path/links to home.html-->
+      <li class="header"><a href="/" class="header" id="homeLogo">Home Logo</a></li><!--change href path/links to home.html-->
       <li class="header"><a href="#" class="header">Gallery</a></li><!--change href path/links to projects/gallery.html-->
       <li class="header">
         <form action="#" class="header" id="searchForm"><!--change form action-->
@@ -24,6 +24,7 @@
       </li>
       {% if user.is_authenticated %}
       <li class="header" id="logoutBtn"><a href="#" class="header">Logout</a></li>
+      {% endif %}
     </ul>
   </header>
   {% block content %}
