@@ -7,14 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>P.R.E.P.</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}"><!--make sure path matches-->
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <!--<script defer src="script.js"></script>       change href path/JS may not be needed-->
 </head>
 <body>
   <header>
     <ul class="header">
-      <li class="header"><a href="/" class="header" id="homeLogo">Home Logo</a></li><!--change href path/links to home.html-->
+      <li class="header"><a href="/" class="header" id="homeLogo">Home Logo</a></li>
+      {% if user.is_authenticated %}
+        <li class="header"><a href="#" class="header">Create New Project</a></li><!--change href path/links to projects/new.html-->
+      {% endif %}
       <li class="header"><a href="#" class="header">Gallery</a></li><!--change href path/links to projects/gallery.html-->
       <li class="header">
         <form action="#" class="header" id="searchForm"><!--change form action-->
@@ -23,7 +25,7 @@
         </form>
       </li>
       {% if user.is_authenticated %}
-      <li class="header" id="logoutBtn"><a href="#" class="header">Logout</a></li>
+        <li class="header" id="logoutBtn"><a href="#" class="header">Logout</a></li><!--change href path/logout user and redirect to home.html-->
       {% endif %}
     </ul>
   </header>
