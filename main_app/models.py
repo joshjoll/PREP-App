@@ -29,11 +29,12 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'project_id': self.id})
 
-    def __str__(self):
-        return f"Image for project_id: {self.project_id} @{self.url}"
+    # def __str__(self):
+        # return f"Image for project_id: {self.project_id} @{self.url}"
 
     class Meta:
         ordering = ['-cohort_date']
+
 
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
@@ -44,7 +45,6 @@ class Technology(models.Model):
 class Review(models.Model):
     review = models.TextField(max_length = 250)
     rating = models.IntegerField(
-        max_length = 1,
         choices = RATING,
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
