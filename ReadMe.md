@@ -21,7 +21,7 @@ Working in a team requires more upfront planning to ensure the team is "on the s
 
 ## Your team must:
 
-Pitch your project to the class first thing Friday with a [pitch deck] (https://pitchdeck.improvepresentation.com/what-is-a-pitch-deck) that includes:
+Pitch your project to the class first thing Friday with a [pitch deck](https://pitchdeck.improvepresentation.com/what-is-a-pitch-deck) that includes:
 
 - The application name.
 - Your team members and their roles.
