@@ -45,19 +45,23 @@ class Add_Image(CreateView):
     success_url = '/projects/<int:project_id>'
 # Loads page to update project. Limit to logged in
 # CBV
-class Update_Project(UpdateView):
-    model = Project
-    fields= '__all__'
-    success_url = '/projects/<int:project_id>'
+def Update_Project(request, project_id):
+    project = Project.objects.get(id=project_id)
+    review = project.review.all()
+
+    return render(request, 'projects/update.html', {
+    'project': project,
+    'review': review,
+    })
 
 #REVIEW RELATED VIEWS
 
 # Loads new review Page. Limit to logged in
 # CBV
 class new_review(CreateView):
-    model = Project
+    model = Review
     fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+
 # Loads consolidated review page. Limit to team members
 # CBV model template
 def consolidated_review(request, project_id):

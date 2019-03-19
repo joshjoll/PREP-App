@@ -48,7 +48,7 @@ class Review(models.Model):
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk':self.id})
+        return reverse('new_review', kwargs={'pk':self.id})
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"
@@ -74,5 +74,5 @@ class User(models.Model):
     linkedin_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
 
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'user_id': self.id})
+    def __str__(self):
+        return self.first
