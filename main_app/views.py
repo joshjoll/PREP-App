@@ -21,8 +21,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 # Display Index Page of all projects
-class Index(ListView):
+class gallery(ListView):
     model = Project
+    template_name = 'projects/gallery.html'
 
 # Display project details. Limit to logged in
 class Project_Detail(DetailView):
