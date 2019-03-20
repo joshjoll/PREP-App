@@ -43,12 +43,14 @@ class Technology(models.Model):
 
 class Review(models.Model):
     review = models.TextField(max_length = 250)
-    rating = models.IntegerField(
+    rating = models.CharField(
+        max_length=1,
         choices = RATING,
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     def get_absolute_url(self):
-        return reverse('new_review', kwargs={'pk':self.id})
+        return reverse('detail', kwargs={'pk': self.project.id})
+        pass
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"

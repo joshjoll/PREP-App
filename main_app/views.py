@@ -60,7 +60,11 @@ def Update_Project(request, project_id):
 # CBV
 class new_review(CreateView):
     model = Review
-    fields= '__all__'
+    fields= ['review', 'rating']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(new_review, self).form_valid(form)
+        return reverse('detail', kwargs={'pk': form.instance.project.id})
 
 # Loads consolidated review page. Limit to team members
 # CBV model template
