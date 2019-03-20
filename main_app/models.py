@@ -1,4 +1,4 @@
-from django.db import models
+git checkout -b feature/MYFEATURE develop
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
@@ -64,8 +64,9 @@ class Image(models.Model):
         return reverse('detail', kwargs={'image_id': self.id})
     
 class User(models.Model):
-    first = models.CharField(max_length = 100)
-    last = models.CharField(max_length = 100)
+    username = models.Charfield(max_length = 20)
+    first_name = models.CharField(max_length = 100)
+    last_name = models.CharField(max_length = 100)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     specialty = models.CharField(max_length = 100)

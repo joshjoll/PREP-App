@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 #Model imports
 from .models import Project, Technology, Review, Image, User
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -54,10 +55,10 @@ def consolidated_review(request, project_id):
 
 #USER RELATED VIEWS
 #
-# from django.contrib.auth import login
-# from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+# from django.contrib.auth.forms import user_creat_form
 # from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.contrib.auth.mixins import login_RequiredMixin
 # Display User Profile Page. Limit to logged in
 class Profile(DetailView):
     model = User
