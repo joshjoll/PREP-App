@@ -35,10 +35,11 @@ class Project(models.Model):
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
-        return reverse('image', kwargs={'pk':self.id})
+        return reverse('image', kwargs={'pk':self.project.id})
 
 
 class Review(models.Model):

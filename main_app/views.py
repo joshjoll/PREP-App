@@ -38,8 +38,12 @@ class New_Project(CreateView):
 
 class Add_Technology(CreateView):
     model = Technology
-    fields= '__all__'
-    success_url = '/projects/<int:project_id>/image/'
+    fields= ['tech_type']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(Add_Technology, self).form_valid(form)
+        return reverse('image', kwargs={'pk': form.instance.project.id})
+
 class Add_Image(CreateView):
     model = Project
     fields= '__all__'
