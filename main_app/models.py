@@ -58,11 +58,11 @@ class Review(models.Model):
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'image_id': self.id})
+        return reverse('detail', kwargs={'pk': self.project.id})
 
 class User(models.Model):
     first = models.CharField(max_length = 100)
