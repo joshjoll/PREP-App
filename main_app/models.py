@@ -12,6 +12,24 @@ RATING = (
     ('5', '5')
 )
 
+
+class User(models.Model):
+    first = models.CharField(max_length = 100)
+    last = models.CharField(max_length = 100)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    specialty = models.CharField(max_length = 100)
+    cohort_date = models.DateField('cohort date')
+    project = models.ManyToManyField(Project)
+    git_hub_link = models.CharField(max_length = 250)
+    linkedin_link = models.CharField(max_length = 250)
+    deployed_app_link = models.CharField(max_length = 250)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'user_id': self.id})
+        
+
+
 # Create your models here.
 class Project(models.Model):
     cohort_date = models.DateField('project date')
@@ -38,7 +56,6 @@ class Project(models.Model):
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Review(models.Model):
@@ -52,26 +69,11 @@ class Review(models.Model):
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"
 
+
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'image_id': self.id})
-
-class User(models.Model):
-    first = models.CharField(max_length = 100)
-    last = models.CharField(max_length = 100)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    specialty = models.CharField(max_length = 100)
-    cohort_date = models.DateField('cohort date')
-    project = models.ManyToManyField(Project)
-    git_hub_link = models.CharField(max_length = 250)
-    linkedin_link = models.CharField(max_length = 250)
-    deployed_app_link = models.CharField(max_length = 250)
-
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'user_id': self.id})
