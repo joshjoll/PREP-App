@@ -21,43 +21,61 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 # Display Index Page of all projects
-class Index(ListView):
+class gallery(ListView):
     model = Project
+    template_name = 'projects/gallery.html'
 
 # Display project details. Limit to logged in
 class Project_Detail(DetailView):
     model = Project
-# Loads new project form page, Limit to logged in
+# Loads new project form page, Needs to limit to logged in
 # CBV
 class New_Project(CreateView):
     model = Project
     fields= '__all__'
 
 
-
+# Loads upon submit of New_Project form
 class Add_Technology(CreateView):
     model = Technology
-    fields= '__all__'
-    success_url = '/projects/<int:project_id>/image/'
+    fields= ['tech_type']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(Add_Technology, self).form_valid(form)
+        return reverse('image', kwargs={'pk': form.instance.project.id})
+
+
+# Loads upon submit of Add_Technology form
 class Add_Image(CreateView):
-    model = Project
-    fields= '__all__'
-    success_url = '/projects/<int:project_id>'
+    model = Image
+    fields= ['url']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(Add_Image, self).form_valid(form)
+        return reverse('detail', kwargs={'pk': form.instance.project.id})
 # Loads page to update project. Limit to logged in
 # CBV
-class Update_Project(UpdateView):
-    model = Project
-    fields= '__all__'
-    success_url = '/projects/<int:project_id>'
+def Update_Project(request, project_id):
+    project = Project.objects.get(id=project_id)
+    review = project.review.all()
+
+    return render(request, 'projects/update.html', {
+    'project': project,
+    'review': review,
+    })
 
 #REVIEW RELATED VIEWS
 
 # Loads new review Page. Limit to logged in
 # CBV
 class new_review(CreateView):
-    model = Project
-    fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+    model = Review
+    fields= ['review', 'rating']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(new_review, self).form_valid(form)
+        return reverse('detail', kwargs={'pk': form.instance.project.id})
+
 # Loads consolidated review page. Limit to team members
 # CBV model template
 def consolidated_review(request, project_id):

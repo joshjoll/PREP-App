@@ -35,20 +35,22 @@ class Project(models.Model):
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
-        return reverse('image', kwargs={'pk':self.id})
+        return reverse('image', kwargs={'pk':self.project.id})
 
 
 class Review(models.Model):
     review = models.TextField(max_length = 250)
-    rating = models.IntegerField(
+    rating = models.CharField(
+        max_length=1,
         choices = RATING,
     )
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk':self.id})
+        return reverse('detail', kwargs={'pk': self.project.id})
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"
@@ -56,11 +58,11 @@ class Review(models.Model):
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'image_id': self.id})
+        return reverse('detail', kwargs={'pk': self.project.id})
 
 class User(models.Model):
     first = models.CharField(max_length = 100)
@@ -74,5 +76,5 @@ class User(models.Model):
     linkedin_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
 
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'user_id': self.id})
+    def __str__(self):
+        return self.first
