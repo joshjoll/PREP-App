@@ -50,7 +50,6 @@ class Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.project.id})
-        pass
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.review}"
