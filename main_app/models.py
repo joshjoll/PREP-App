@@ -58,7 +58,6 @@ class Review(models.Model):
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
