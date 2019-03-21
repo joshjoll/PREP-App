@@ -13,23 +13,21 @@
 <body>
   <header>
     <ul class="header">
-      <li class="header"><a href="/" class="header" id="homeLogo">Home Logo</a></li>
-      {% if user.is_authenticated %}
-        <li class="header"><a href="#" class="header">Create New Project</a></li><!--change href path/links to projects/new.html-->
-      {% endif %}
-      <li class="header"><a href="#" class="header">Gallery</a></li><!--change href path/links to projects/gallery.html-->
+      <li class="header"><a href="/" class="header" id="homeLogo">ME-DO</a></li>
+        <li class="header"><a href="{% url 'project_form' %}" class="header">Create New Project</a></li><!--change href path/links to projects/new.html-->
+      <li class="header"><a href="{% url 'gallery' %}" class="header">Gallery</a></li>
       <li class="header">
         <form action="#" class="header" id="searchForm"><!--change form action-->
           <input class="header" type="text" name="search" placeholder="Search for a project..">
           <button class="header" id="searchBtn" type="submit">Find</button>
         </form>
       </li>
-      {% if user.is_authenticated %}
         <li class="header" id="logoutBtn"><a href="#" class="header">Logout</a></li><!--change href path/logout user and redirect to home.html-->
-      {% endif %}
     </ul>
   </header>
+
   {% block content %}
   {% endblock %}
+
 </body>
 </html>

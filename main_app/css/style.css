@@ -125,7 +125,7 @@ a:hover {
   border: none;
   font-family: 'Montserrat', sans-serif;
 }
-#loginBtn:hover, #searchBtn:hover, #registerBtn:hover, #newProFormBtn:hover, #reviewFormBtn:hover {
+#loginBtn:hover, #searchBtn:hover, #registerBtn:hover, #newProFormBtn:hover {
   transition: 0.4s;
   background-color: #000000;
   color: #EFF2C0;
@@ -240,7 +240,7 @@ li.newProForm:last-child {
   border: none;
   font-family: 'Montserrat', sans-serif;
 }
-#id_cohort_date, #id_name, #id_description, #id_teammate_role, #id_feedback, #id_git_hub_link, #id_deployed_app_link {
+#id_cohort_date, #id_name, #id_description, #id_role, #id_feedback, #id_git_hub_link, #id_deployed_app_link {
   width: 100%;
   border: none;
   background-color: #A4BAB7;
@@ -277,58 +277,4 @@ li.projects {
   background-color: #A4BAB7;
   border-radius: 10px;
   border: 1px solid #000000;
-}
-
-/*------------------------------------------------------------------------*/
-
-h1.reviewForm {
-  text-align: center;
-  margin: 20px 0;
-}
-
-form.reviewForm {
-  padding: 20px;
-  margin: 0 50px 0 50px;
-  display: flex;
-  justify-content: center;
-}
-
-ul.reviewForm {
-  list-style-type: none;
-  padding: 20px;
-  margin: 0;
-  width: 400px;
-  height: 1250px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-  grid-template-columns: 1fr 2fr;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  align-items: center;
-}
-li.reviewForm:last-child {
-  grid-column: 1 / 3;
-  margin: 40px 80px 0 80px;
-}
-#reviewFormBtn {
-  display: block;
-  width: 100%;
-  height: 30px;
-  border-radius: 10px;
-  outline: none;
-  background-color: #EFF2C0;
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-}
-#id_pitchdeck_review, #id_pitchdeck_rating, #id_content_review, #id_content_rating, #id_UIUX_review, #id_UIUX_rating, #id_clean_code_review, #id_clean_code_rating, #id_presentation_review, #id_presentation_rating {
-  width: 100%;
-  border: none;
-  background-color: #A4BAB7;
-  border-radius: 5px;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  outline: none;
-  resize: none;
-  padding: 0;
-  min-height: 30px;
 }
