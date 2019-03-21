@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="register">
+  <form action="" class="register" id="registerForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" name="firstName">
+    <label for="lastName">Last Name:</label>
+    <input type="text" name="lastName">
+    <label for="email">Email:</label>
+    <input type="email" name="email">
+    <label for="cohort">Cohort:</label>
+    <input type="date" name="cohort">
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+    <label for="password2">Confirm Password:</label>
+    <input type="password" name="password2">
+    <button id="registerBtn" type="submit">Create Account</button>
+  </form>
+</main>
+
+{% endblock %}

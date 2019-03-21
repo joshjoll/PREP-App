@@ -16,41 +16,76 @@ from .models import Project, Technology, Review, Image, User
 
 #PROJECT RELATED VIEWS
 # Display Landing Page
-def landing(request):
-    return render(request, 'landing.html')
+def home(request):
+    return render(request, 'home.html')
+def about(request):
+    return render(request, 'about.html')
 # Display Index Page of all projects
-class Index(ListView):
-    model = Project
+def gallery(request):
+    projects = Project.objects.all()
+    return render(request, 'projects/gallery.html', {'projects': projects})
+# class gallery(ListView):
+#     model = Project
+#     fields= ['name', 'teammate_role']
+#     template_name = 'projects/gallery.html'
 
 # Display project details. Limit to logged in
 class Project_Detail(DetailView):
     model = Project
-# Loads new project form page, Limit to logged in
+# Loads new project form page, Needs to limit to logged in
 # CBV
 class New_Project(CreateView):
     model = Project
     fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+
+
+# Loads upon submit of New_Project form
+class Add_Technology(CreateView):
+    model = Technology
+    fields= ['tech1', 'tech2', 'tech3', 'tech4', 'tech4', 'tech5', 'tech6', 'tech7', 'tech8', 'tech9', 'tech10']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(Add_Technology, self).form_valid(form)
+        return reverse('image', kwargs={'pk': form.instance.project.id})
+
+
+# Loads upon submit of Add_Technology form
+class Add_Image(CreateView):
+    model = Image
+    fields= ['url1', 'url2', 'url3']
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(Add_Image, self).form_valid(form)
+        return reverse('detail', kwargs={'pk': form.instance.project.id})
 # Loads page to update project. Limit to logged in
 # CBV
-class Update_Project(UpdateView):
-    model = Project
-    fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+def Update_Project(request, project_id):
+    project = Project.objects.get(id=project_id)
+    review = project.review.all()
+
+    return render(request, 'projects/update.html', {
+    'project': project,
+    'review': review,
+    })
 
 #REVIEW RELATED VIEWS
 
 # Loads new review Page. Limit to logged in
 # CBV
 class new_review(CreateView):
-    model = Project
-    fields= '__all__'
-    success_url = 'projects/<int:project_id>/'
+    model = Review
+    fields= ['pitchdeck_review', 'pitchdeck_rating', 'content_review', 'content_rating', 'UIUX_review', 'UIUX_rating', 'clean_code_review', 'clean_code_rating', 'presentation_review', 'presentation_rating',]
+    def form_valid (self, form):
+        form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
+        return super(new_review, self).form_valid(form)
+        return reverse('detail', kwargs={'pk': form.instance.project.id})
+
 # Loads consolidated review page. Limit to team members
 # CBV model template
-def consolidated_review(request, project_id):
-    rev = Review.objects.filter(id=project_id)
-    return render(request, "consolidated_review",{ 'review': rev })
+def consolidated_review(request, pk):
+    rev = Review.objects.filter(project=pk)
+    project = Project.objects.get(id=pk)
+    return render(request, "consolidated_review.html", { 'review': rev, 'project': project })
 
 #USER RELATED VIEWS
 #
@@ -99,5 +134,7 @@ def save_user(request):
 
 # Complicated. Lets users search for their cohort, then select a class member and add them to a project. From owner detail page, redirects to owner detail page. Limit to logged in
 def add_new_teammate(request, project_id, username):
-    find_user = User.objects.get(name=userid).project.add(project_id)
-    return HttpResponse("add_new_teammate")
+    find_user = User.objects.get(name=userid)
+    find_user.project.add(project_id)
+    return redirect("add_new_teammate")
+    # on detail template: {% if user.project.id = pk %}Display team view stuff {% else %} Display review stuff
