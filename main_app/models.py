@@ -17,7 +17,7 @@ class Project(models.Model):
     cohort_date = models.DateField('project date')
     name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
-    role = models.TextField(max_length = 100)
+    teamate_role = models.TextField(max_length = 100)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
@@ -35,7 +35,6 @@ class Project(models.Model):
 class Technology(models.Model):
     tech_type = models.TextField(max_length = 250)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
@@ -58,7 +57,6 @@ class Review(models.Model):
 class Image(models.Model):
     url = models.CharField(max_length = 200)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):
