@@ -13,41 +13,12 @@ RATING = (
 )
 
 
-class User(models.Model):
-    first = models.CharField(max_length = 100)
-    last = models.CharField(max_length = 100)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    specialty = models.CharField(max_length = 100)
-    cohort_date = models.DateField('cohort date')
-    project = models.ManyToManyField(Project)
-    git_hub_link = models.CharField(max_length = 250)
-    linkedin_link = models.CharField(max_length = 250)
-    deployed_app_link = models.CharField(max_length = 250)
-
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'user_id': self.id})
-        
-
-
 # Create your models here.
 class Project(models.Model):
     cohort_date = models.DateField('project date')
     project_name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    teammate_role = models.TextField(max_length = 100)
-=======
-<<<<<<< HEAD
-    teammate_role = models.TextField(max_length = 100)
-=======
-    teamate_role = models.TextField(max_length = 100)
->>>>>>> 95e11ba0bc8d5f53b700f03aac50154da8de2d58
->>>>>>> e059525dc69609e0ca9d61b52dcf95c01c431e56
-=======
     teammate_role = models.TextField(max_length = 100, blank=True)
->>>>>>> f510ab2cf4bf041356b1a8b61312b60e8006df10
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
@@ -75,22 +46,17 @@ class Technology(models.Model):
     tech9 = models.CharField(max_length = 200, blank=True)
     tech10 = models.CharField(max_length = 200, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-<<<<<<< HEAD
-=======
     #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
         return reverse('image', kwargs={'pk':self.project.id})
->>>>>>> feature/User-auth-feat-A
 
 
 class Review(models.Model):
-<<<<<<< HEAD
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     review = models.TextField(max_length = 250)
     rating = models.CharField(
         max_length=1,
-=======
     pitchdeck_review = models.TextField('Pitch Deck Feedback', max_length = 250)
     pitchdeck_rating = models.IntegerField(
         'Pitch Deck Rating',
@@ -114,7 +80,6 @@ class Review(models.Model):
     presentation_review = models.TextField('Presentation Feedback', max_length = 250)
     presentation_rating = models.IntegerField(
         'Presentation Rating',
->>>>>>> e059525dc69609e0ca9d61b52dcf95c01c431e56
         choices = RATING,
     )
 
@@ -133,24 +98,10 @@ class Image(models.Model):
 
 
     def get_absolute_url(self):
-<<<<<<< HEAD
         return reverse('detail', kwargs={'image_id': self.id})
-=======
         return reverse('detail', kwargs={'pk': self.project.id})
 
-<<<<<<< HEAD
-class User_details(models.Model):
-    # first = models.CharField(max_length = 100)
-    # last = models.CharField(max_length = 100)
-    # email = models.CharField(max_length=100)
-    # password = models.CharField(max_length=100)
-    specialty = models.CharField(max_length = 100)
-    cohort_date = models.DateField('cohort date')
-    # project = models.ManyToManyField(Project)
-    git_hub_link = models.CharField(max_length = 250)
-    linkedin_link = models.CharField(max_length = 250)
-    portfolio_link = models.CharField(max_length = 250)
-=======
+
 class User_Details(models.Model):
     first = models.CharField(max_length = 100)
     last = models.CharField(max_length = 100)
@@ -161,8 +112,6 @@ class User_Details(models.Model):
     git_hub_link = models.CharField(max_length = 250, blank=True)
     linkedin_link = models.CharField(max_length = 250, blank=True)
     portfolio_link = models.CharField(max_length = 250, blank=True)
->>>>>>> e059525dc69609e0ca9d61b52dcf95c01c431e56
 
     def __str__(self):
         return self.first
->>>>>>> feature/User-auth-feat-A
