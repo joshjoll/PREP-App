@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 #Model imports
-from .models import Project, Technology, Review, Image, User
+from .models import Project, Technology, Review, Image, User_details
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -19,6 +19,7 @@ from django.contrib.auth.models import User
 # Display Landing Page
 def home(request):
     return render(request, 'home.html')
+
 def about(request):
     return render(request, 'about.html')
 # Display Index Page of all projects
@@ -85,13 +86,13 @@ def consolidated_review(request, project_id):
 
 #USER RELATED VIEWS
 #
-from django.contrib.auth import login
+# from django.contrib.auth import login
 # from django.contrib.auth.forms import user_creat_form
 # from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.mixins import login_RequiredMixin
 # Display User Profile Page. Limit to logged in
 class Profile(DetailView):
-    model = User
+    model = User_details
 # Loads sign up page
 # CBV
 
@@ -110,21 +111,21 @@ class Profile(DetailView):
 #         return user
 
 def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    # This is how to create a 'user' form object
-    # that includes the data from the browser
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('index')
-    else:
-      error_message = 'Invalid credentials - try again'
-  form = UserCreationForm()
-  context = {'form': form, 'error_message': error_message}
-  return render(request, 'registration/signup.html', context)
-# Saves new users, redirects to index page
+    error_message = ''
+    if request.method == 'POST':
+        # This is how to create a 'user' form object
+        # that includes the data from the browser
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('gallery')
+        else:
+            error_message = 'Invalid credentials - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+    # Saves new users, redirects to index page
 def save_user(request):
     return HttpResponse("save_user")
 

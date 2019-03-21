@@ -78,4 +78,3 @@ class User_details(models.Model):
 
     def __str__(self):
         return self.first
-\
