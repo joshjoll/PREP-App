@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 
 RATING = (
@@ -12,15 +12,17 @@ RATING = (
     (5, '5 Stars')
 )
 
+
 # Create your models here.
 class Project(models.Model):
     cohort_date = models.DateField('project date')
-    name = models.CharField(max_length = 100)
+    project_name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
     teammate_role = models.TextField(max_length = 100, blank=True)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('technology', kwargs={'pk':self.id})
@@ -51,6 +53,10 @@ class Technology(models.Model):
 
 
 class Review(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    review = models.TextField(max_length = 250)
+    rating = models.CharField(
+        max_length=1,
     pitchdeck_review = models.TextField('Pitch Deck Feedback', max_length = 250)
     pitchdeck_rating = models.IntegerField(
         'Pitch Deck Rating',
@@ -76,12 +82,13 @@ class Review(models.Model):
         'Presentation Rating',
         choices = RATING,
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.project.id})
 
     # def __str__(self):
     #     return f"{self.get_rating_display()} on {self.review}"
+
 
 class Image(models.Model):
     url1 = models.CharField(max_length = 200)
@@ -91,7 +98,9 @@ class Image(models.Model):
 
 
     def get_absolute_url(self):
+        return reverse('detail', kwargs={'image_id': self.id})
         return reverse('detail', kwargs={'pk': self.project.id})
+
 
 class User_Details(models.Model):
     first = models.CharField(max_length = 100)
