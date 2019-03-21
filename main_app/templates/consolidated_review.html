@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>All Reviews on project.name</h1>
+
+{%for review in review %}
+<h3>{{review.pitchdeck_review}}</h3>
+{%endfor%}
+{%for review in review %}
+<h3>{{review.content_review}}</h3>
+{%endfor%}
+
+{% endblock %}
