@@ -23,7 +23,7 @@ def about(request):
 # Display Index Page of all projects
 def gallery(request):
     projects = Project.objects.all()
-    return render(request, 'projects/gallery.html', {'projects': projects})
+    return render(request, 'projects/gallery.html', {'projects': projects, })
 # class gallery(ListView):
 #     model = Project
 #     fields= ['name', 'teammate_role']
@@ -135,6 +135,6 @@ def save_user(request):
 # Complicated. Lets users search for their cohort, then select a class member and add them to a project. From owner detail page, redirects to owner detail page. Limit to logged in
 def add_new_teammate(request, project_id, username):
     find_user = User.objects.get(name=userid)
-    find_user.project.add(project_id)
+    find_user.project.add(pk)
     return redirect("add_new_teammate")
     # on detail template: {% if user.project.id = pk %}Display team view stuff {% else %} Display review stuff
