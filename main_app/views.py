@@ -134,5 +134,7 @@ def save_user(request):
 
 # Complicated. Lets users search for their cohort, then select a class member and add them to a project. From owner detail page, redirects to owner detail page. Limit to logged in
 def add_new_teammate(request, project_id, username):
-    find_user = User.objects.get(name=userid).project.add(project_id)
-    return HttpResponse("add_new_teammate")
+    find_user = User.objects.get(name=userid)
+    find_user.project.add(project_id)
+    return redirect("add_new_teammate")
+    # on detail template: {% if user.project.id = pk %}Display team view stuff {% else %} Display review stuff
