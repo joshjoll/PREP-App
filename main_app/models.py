@@ -1,4 +1,4 @@
-git checkout -b feature/MYFEATURE develop
+from django.db import models
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
@@ -15,12 +15,13 @@ RATING = (
 # Create your models here.
 class Project(models.Model):
     cohort_date = models.DateField('project date')
-    name = models.CharField(max_length = 100)
+    project_name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
-    teamate_role = models.TextField(max_length = 100)
+    teammate_role = models.TextField(max_length = 100)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('technology', kwargs={'pk':self.id})
@@ -42,12 +43,13 @@ class Technology(models.Model):
 
 
 class Review(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     review = models.TextField(max_length = 250)
     rating = models.CharField(
         max_length=1,
         choices = RATING,
     )
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.project.id})
 
@@ -62,18 +64,18 @@ class Image(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.project.id})
 
-class User(models.Model):
-    username = models.Charfield(max_length = 20)
-    first_name = models.CharField(max_length = 100)
-    last_name = models.CharField(max_length = 100)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+class User_details(models.Model):
+    # first = models.CharField(max_length = 100)
+    # last = models.CharField(max_length = 100)
+    # email = models.CharField(max_length=100)
+    # password = models.CharField(max_length=100)
     specialty = models.CharField(max_length = 100)
     cohort_date = models.DateField('cohort date')
-    project = models.ManyToManyField(Project)
+    # project = models.ManyToManyField(Project)
     git_hub_link = models.CharField(max_length = 250)
     linkedin_link = models.CharField(max_length = 250)
-    deployed_app_link = models.CharField(max_length = 250)
+    portfolio_link = models.CharField(max_length = 250)
 
     def __str__(self):
         return self.first
+\
