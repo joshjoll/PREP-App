@@ -17,7 +17,11 @@ class Project(models.Model):
     cohort_date = models.DateField('project date')
     name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
+<<<<<<< HEAD
     teammate_role = models.TextField(max_length = 100)
+=======
+    teamate_role = models.TextField(max_length = 100)
+>>>>>>> 95e11ba0bc8d5f53b700f03aac50154da8de2d58
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
@@ -44,7 +48,6 @@ class Technology(models.Model):
     tech9 = models.CharField(max_length = 200, blank=True)
     tech10 = models.CharField(max_length = 200, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
