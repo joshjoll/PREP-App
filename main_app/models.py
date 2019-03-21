@@ -18,6 +18,7 @@ class Project(models.Model):
     project_name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
 <<<<<<< HEAD
+<<<<<<< HEAD
     teammate_role = models.TextField(max_length = 100)
 =======
 <<<<<<< HEAD
@@ -26,6 +27,9 @@ class Project(models.Model):
     teamate_role = models.TextField(max_length = 100)
 >>>>>>> 95e11ba0bc8d5f53b700f03aac50154da8de2d58
 >>>>>>> e059525dc69609e0ca9d61b52dcf95c01c431e56
+=======
+    teammate_role = models.TextField(max_length = 100, blank=True)
+>>>>>>> f510ab2cf4bf041356b1a8b61312b60e8006df10
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
