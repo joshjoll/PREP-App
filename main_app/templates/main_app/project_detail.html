@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<a href="{% url 'new_review' project.id %}">Review This Project</a>
+
+<a href="{% url 'consolidated_review' project.id %}">Consolidate Reviews</a>
+<a href="{% url 'update_project' project.id %}">update project</a>
+<br>
+<h1>{{ project.name }}</h1>
+
+{%for review in project.review_set.all %}
+<h3>{{review.pitchdeck_review}}</h3>
+{{review.pitchdeck_rating}}
+<h3>{{review.content_review}}</h3>
+{{review.content_rating}}
+<h3>{{review.UIUX_review}}</h3>
+{{review.UIUX_rating}}
+<h3>{{review.clean_code_review}}</h3>
+{{review.clean_code_rating}}
+<h3>{{review.presentation_review}}</h3>
+{{review.presentation_rating}}
+{%endfor%}
+
+{% endblock %}

@@ -16,8 +16,8 @@
           <input type="email" name="email">
           <label for="password">Password:</label>
           <input type="password" name="password">
-          <button id="loginBtn" type="submit">Login</button>
-          <a href="{% url 'register' %}" class="home">Don't have an account? Register here!</a><!--link href/should go to registration/register.html-->
+          <button id="loginBtn" href="{% url 'login' %}" type="submit">Login</button>
+          <a href="{% url 'signup' %}" class="home">Don't have an account? Register here!</a><!--link href/should go to registration/register.html-->
         </form>
       {% endif %}
     </aside>
