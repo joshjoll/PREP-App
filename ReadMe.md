@@ -4,6 +4,15 @@
 
 PREP allows you to post, review, and rate projects that you've created while at General Assembly.
 
+## User Stories
+AAU I want to be able to log in and share details about my project with my class.
+
+AAU, I want to be able to receive feedback from my peers so I know where I can improve on aspects such as my code, presentation, and overall idea.
+
+AAU, I want to be able to see past project ideas and their github links, as well as provide anonymous feedback on those projects.
+
+AAU, I want to be able to review my feedback with my teammates, but not have all my peers see the feedback
+
 ## Why PREP?
 
 PREP allows you to post your school projects, at any point in their development, and have your peers give you feedback!
