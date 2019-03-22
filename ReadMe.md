@@ -1,81 +1,62 @@
-# PREP App. Project-3.
+# Welcome to PREP App!
 
-## Necessary Deliverables
+## PREP-app stands for Project Review Evaluation Project Application!
 
-A pitch deck, presented as a team to the class Thursday morning.
-A working app, built by the entire team.
-A team Git repository hosted on Github, with frequent commits from every team member dating back to the very beginning of the project.
-A README.md file with:
-An introduction of your app along with a screenshot (one is all you need to "introduce" your application).
-Explanations of the technologies used (including outside APIs).
-A link to your pitch-deck.
-A link to your Trello board that contains your user stories, ERD, and wireframes.
-A link to your deployed app on Heroku.
-Documentation for your app's RESTful API endpoints.
-Descriptions of any unsolved problems your team had to overcome.
-Description of any future enhancements planned.
+PREP allows you to post, review, and rate projects that you've created while at General Assembly.
 
-## Technical Requirements
+## Why PREP?
 
-Working in a team requires more upfront planning to ensure the team is "on the same page"...
+PREP allows you to post your school projects, at any point in their development, and have your peers give you feedback!
+Having others in your cohort review your progress will not only give you extra eyes on your development, but it will also provide
+you with the support and guidance of others that are going through the same course as you.
 
-## Your team must:
+## Creating a profile
 
-Pitch your project to the class first thing Friday with a [pitch deck](https://pitchdeck.improvepresentation.com/what-is-a-pitch-deck) that includes:
+![Create a profile](https://raw.githubusercontent.com/TanPOTGS/wdi-projects/master/landing.png "Login")
 
-- The application name.
-- Your team members and their roles.
-- The problem you are going to solve with your app.
-- Craft thoughtful User Stories together as a team and manage them in Trello.
+With PREP it's easy to create a secure profile that allows you to post, edit, and review projects!
 
-## Manage team contributions and collaboration using Git, GitHub and a standard team work-flow. 
-## Here are some references:
+## Posting projects
 
-[- Team Workflow Video](https://www.youtube.com/watch?v=oFYyTZwMyAg)   
-[- Understanding The GitHub Flow](https://guides.github.com/introduction/flow/)   
-[- A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/)       
-[- Cheatsheet in Class Repo](https://git.generalassemb.ly/WDI-CC/WDI-CC-6/blob/master/resources/git_workflow_team_cheatsheet.md)
+![Post a new project](https://raw.githubusercontent.com/TanPOTGS/wdi-projects/master/newProject.png "New Project")
 
-## Your app must:
+Posting projects is as simple as clicking a button! Enter you project's name, the cohort you belong to, a thumbnail to represent
+your project, or any other details you care to give. At any point in the development of your project you can edit any of the details
+just as easily as you posted them.
 
-Be a full-stack Django application.
-Persist data in PostreSQL.
-Authenticate users using Django's build-in authentication.
-Implement authorization by restricting access to the Creation, Updating & Deletion of resources.
-Be deployed online using Heroku.
+## Viewing projects in a gallery
 
-### The app may optionally:
+![View projects in a gallery](https://raw.githubusercontent.com/TanPOTGS/wdi-projects/master/gallery.png "Gallery")
 
-Consume data from a third-party API
+All projects created by users of the app will be displayed in one central gallery! This allows users to easily scroll through
+projects and select ones to view or review! Thumbnails and project names make identifying posted projects a breeze. However, if
+you don't feel like scrolling through projects, an easy to use search bar at the top of the page allows you to search by project
+name, cohort, or user name!
 
-## Suggested Ways to Get Started
+## Give feedback
 
-### Identify roles on the team, which may be:
+![Review](https://raw.githubusercontent.com/TanPOTGS/wdi-projects/master/newReview.png "Give Feedback")
 
-#### Scrum Master: 
-   the leader of the Agile processes (user stories, stand-ups, etc.) and manager of Trello.
-#### GitHub Manager: 
-   the primary person for managing the repo and GitHub team workflow (merging pull requests, etc.).
-#### Documenter: 
-   the person in charge of the README, etc.
-#### API Manager: 
-   the person in charge of researching, registering with, etc. APIs.
-#### Designer: 
-   the person in charge of UI design/layout and styling.
-#### Database manager: 
-   this person will be in charge of creating and managing the models and their relationships.
+Giving feedback and "rating" your classmates' projects is the main purpose of PREP! Doing this is as easy as clicking on a
+project and filling out a simple form. Simple text fields and a drop-down star rating system makes giving reviews effortless.
 
-#### You don't have to formally fulfill any of the above roles! They are only listed to provide guidance.
+## Please review our app!
 
 
-### Read the docs for whatever technologies / frameworks / API’s you use. Definitely!
+## ERD
 
-Be consistent with your code style. You're working in teams, but you're only making one app per team. Make sure it looks like a unified effort.
+![ERD](https://trello-attachments.s3.amazonaws.com/5c8abe79cff5af44f21bdec4/1188x708/c8bc1425c1dd505e97d7ac4c84b2c27c/image.png "ERD")
 
-### Do your best to have only one dev working on a certain file between commits. This will avoid merge conflicts. This is another reason to separate responsibilities between team members.
+## Paths
 
-Commit early, commit often. Don’t be afraid to break something because you can always go back in time to a previous version.
+![Paths](https://trello-attachments.s3.amazonaws.com/5c8c126339147b8b5c1e1e82/1163x925/8e9b27636292df5c24a44b669a74c98f/image.png "Paths")
 
-Pair programming can be a great way for team members to share knowledge and contribute to the project.
+## Wireframes
 
-Consider following a [Mob Programming](https://en.wikipedia.org/wiki/Mob_programming) approach where the team is always developing together on a single computer. Read this [post](https://underthehood.meltwater.com/blog/2016/06/01/mob-programming/) for more information.
+![Landing](https://trello-attachments.s3.amazonaws.com/5c8ae4d3ef25f61fd0837c32/1194x844/fc6b04ea1d8aefa41a7019aeeac9c8fd/Landing_Page.png "Landing")
+
+![Gallery](https://trello-attachments.s3.amazonaws.com/5c8ae4caedc611178733828c/1053x813/a61a2d78f057f69a05f9a80140a89353/Index_Page.png "Gallery")
+
+![Details](https://trello-attachments.s3.amazonaws.com/5c8ae4fd3610060debaa019f/1053x813/d8f31cda88d56ba505f7ea3f4471da42/Details_Page.png "Details")
+
+![Review](https://trello-attachments.s3.amazonaws.com/5c8ae5036a58a22a376910c2/1053x815/046f6b89d655563ad9fa85dd02f2a892/Review_Page.png "Review")
