@@ -1,7 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.conf import settings
+from django.dispatch import receiver
 
 
 RATING = (
@@ -16,13 +19,12 @@ RATING = (
 # Create your models here.
 class Project(models.Model):
     cohort_date = models.DateField('project date')
-    project_name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 100)
     description = models.TextField(max_length = 250)
     teammate_role = models.TextField(max_length = 100, blank=True)
     feedback = models.TextField(max_length = 250)
     git_hub_link = models.CharField(max_length = 250)
     deployed_app_link = models.CharField(max_length = 250)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('technology', kwargs={'pk':self.id})
@@ -54,9 +56,6 @@ class Technology(models.Model):
 
 class Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    review = models.TextField(max_length = 250)
-    rating = models.CharField(
-        max_length=1,
     pitchdeck_review = models.TextField('Pitch Deck Feedback', max_length = 250)
     pitchdeck_rating = models.IntegerField(
         'Pitch Deck Rating',
@@ -84,7 +83,7 @@ class Review(models.Model):
     )
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.project.id})
+        return reverse('project_detail', kwargs={'pk': self.project.id})
 
     # def __str__(self):
     #     return f"{self.get_rating_display()} on {self.review}"
@@ -98,20 +97,22 @@ class Image(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'image_id': self.id})
-        return reverse('detail', kwargs={'pk': self.project.id})
+        return reverse('project_detail', kwargs={'pk': self.project.id})
 
 
 class User_Details(models.Model):
-    first = models.CharField(max_length = 100)
-    last = models.CharField(max_length = 100)
-    email = models.CharField(max_length=100)
-    specialty = models.CharField(max_length = 100)
-    cohort_date = models.DateField('cohort date')
-    project = models.ManyToManyField(Project)
+    first = models.CharField(max_length = 100, blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL.id, on_delete=models.CASCADE),
+    last = models.CharField(max_length = 100, blank=True)
+    email = models.CharField(max_length=100, blank=True)
+    specialty = models.CharField(max_length = 100, blank=True)
+    cohort_date = models.DateField('cohort date', blank=True)
+    project = models.ManyToManyField(Project, blank=True)
     git_hub_link = models.CharField(max_length = 250, blank=True)
     linkedin_link = models.CharField(max_length = 250, blank=True)
     portfolio_link = models.CharField(max_length = 250, blank=True)
 
     def __str__(self):
         return self.first
+    def get_absolute_url(self):
+        return reverse('gallery')

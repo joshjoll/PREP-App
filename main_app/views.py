@@ -10,10 +10,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 #Model imports
-from .models import Project, Technology, Review, Image, User_details
+from .models import Project, Technology, Review, Image, User_Details
 from django.contrib.auth.models import User
-
-# Create your views here.
 
 #PROJECT RELATED VIEWS
 # Display Landing Page
@@ -26,10 +24,6 @@ def about(request):
 def gallery(request):
     projects = Project.objects.all()
     return render(request, 'projects/gallery.html', {'projects': projects, })
-# class gallery(ListView):
-#     model = Project
-#     fields= ['name', 'teammate_role']
-#     template_name = 'projects/gallery.html'
 
 # Display project details. Limit to logged in
 class Project_Detail(DetailView):
@@ -58,62 +52,36 @@ class Add_Image(CreateView):
     def form_valid (self, form):
         form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
         return super(Add_Image, self).form_valid(form)
-        return reverse('detail', kwargs={'pk': form.instance.project.id})
+        return reverse('project_detail', kwargs={'pk': form.instance.project.id})
 # Loads page to update project. Limit to logged in
-# CBV
-def Update_Project(request, project_id):
-    project = Project.objects.get(id=project_id)
-    review = project.review.all()
+def Update_Project(request, pk):
+    project = Project.objects.get(id=pk)
 
-    return render(request, 'projects/update.html', {
+    return render(request, 'update_project.html', {
     'project': project,
-    'review': review,
     })
 
 #REVIEW RELATED VIEWS
 
 # Loads new review Page. Limit to logged in
-# CBV
 class new_review(CreateView):
     model = Review
     fields= ['pitchdeck_review', 'pitchdeck_rating', 'content_review', 'content_rating', 'UIUX_review', 'UIUX_rating', 'clean_code_review', 'clean_code_rating', 'presentation_review', 'presentation_rating',]
     def form_valid (self, form):
         form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
         return super(new_review, self).form_valid(form)
-        return reverse('detail', kwargs={'pk': form.instance.project.id})
+        return reverse('project_detail', kwargs={'pk': form.instance.project.id})
 
 # Loads consolidated review page. Limit to team members
-# CBV model template
 def consolidated_review(request, pk):
     rev = Review.objects.filter(project=pk)
     project = Project.objects.get(id=pk)
     return render(request, "consolidated_review.html", { 'review': rev, 'project': project })
 
-#USER RELATED VIEWS
-#
-# from django.contrib.auth import login
-# from django.contrib.auth.forms import user_creat_form
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.mixins import login_RequiredMixin
+
 # Display User Profile Page. Limit to logged in
 class Profile(DetailView):
-    model = User_details
-# Loads sign up page
-# CBV
-
-# class UserCreateForm(UserCreationForm):
-#     extra_field = forms.CharField(required=True)
-#
-#     class Meta:
-#         model = User
-#         fields = ("andrey",)
-#
-#     def save(self, commit=True):
-#         user = super(UserCreateForm, self).save(commit=False)
-#         user.extra_field = self.cleaned_data["extra_field"]
-#         if commit:
-#             user.save()
-#         return user
+    model = User_Details
 
 def signup(request):
     error_message = ''
@@ -124,15 +92,21 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('gallery')
+            return redirect('User_Details')
         else:
             error_message = 'Invalid credentials - try again'
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
     # Saves new users, redirects to index page
-def save_user(request):
-    return HttpResponse("save_user")
+
+class User_Details(CreateView):
+    model = User_Details
+    fields = ['first', 'last', 'email', 'specialty', 'cohort_date', 'git_hub_link', 'linkedin_link', 'portfolio_link']
+    def form_valid (self, form):
+        form.instance.user = self.request.user
+        return super(User_Details, self).form_valid(form)
+        return reverse('gallery')
 
 # Complicated. Lets users search for their cohort, then select a class member and add them to a project. From owner detail page, redirects to owner detail page. Limit to logged in
 def add_new_teammate(request, project_id, username):

@@ -15,7 +15,7 @@ urlpatterns = [
     path('', views.add_new_teammate, name='add_new_teammate' ),
     path('user/', views.Profile, name='profile' ),
     path('user/new/', views.signup, name='register' ),
-    path('', views.save_user, name='save_user' ),
+    path('user/details/', views.User_Details.as_view(), name='User_Details' ),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup', views.signup, name='signup'),
 ]
