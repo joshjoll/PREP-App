@@ -102,7 +102,7 @@ class Image(models.Model):
 
 class User_Details(models.Model):
     first = models.CharField(max_length = 100, blank=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL.id, on_delete=models.CASCADE),
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     last = models.CharField(max_length = 100, blank=True)
     email = models.CharField(max_length=100, blank=True)
     specialty = models.CharField(max_length = 100, blank=True)

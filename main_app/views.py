@@ -104,7 +104,7 @@ class User_Details(CreateView):
     model = User_Details
     fields = ['first', 'last', 'email', 'specialty', 'cohort_date', 'git_hub_link', 'linkedin_link', 'portfolio_link']
     def form_valid (self, form):
-        form.instance.user = self.request.user
+        form.instance.user = self.request.user.id
         return super(User_Details, self).form_valid(form)
         return reverse('gallery')
 
