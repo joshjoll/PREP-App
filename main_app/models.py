@@ -48,7 +48,6 @@ class Technology(models.Model):
     tech9 = models.CharField(max_length = 200, blank=True)
     tech10 = models.CharField(max_length = 200, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    #This needs reconfigured, else tech will only be applied to user creating the project. Maybe accessed through projects for the user
 
     def get_absolute_url(self):
         return reverse('image', kwargs={'pk':self.project.id})
@@ -102,7 +101,7 @@ class Image(models.Model):
 
 class User_Details(models.Model):
     first = models.CharField(max_length = 100, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     last = models.CharField(max_length = 100, blank=True)
     email = models.CharField(max_length=100, blank=True)
     specialty = models.CharField(max_length = 100, blank=True)

@@ -3,24 +3,22 @@
 
 
 
-<a href="{% url 'new_review' project.id %}">Review This Project</a>
 
-<a href="{% url 'consolidated_review' project.id %}">Consolidate Reviews</a>
-<a href="{% url 'update_project' project.id %}">update project</a>
-<br>
 <h1>{{ project.name }}</h1>
+<br>
+<br>
 
-{%for review in project.review_set.all %}
-<h3>{{review.pitchdeck_review}}</h3>
-{{review.pitchdeck_rating}}
-<h3>{{review.content_review}}</h3>
-{{review.content_rating}}
-<h3>{{review.UIUX_review}}</h3>
-{{review.UIUX_rating}}
-<h3>{{review.clean_code_review}}</h3>
-{{review.clean_code_rating}}
-<h3>{{review.presentation_review}}</h3>
-{{review.presentation_rating}}
-{%endfor%}
+<h3>{{project.cohort_date}}</h3>
+<h3>{{project.description}}</h3>
+<h3>{{project.teammate_role}}</h3>
+<h3>{{project.git_hub_link}}</h3>
+<h3>{{project.deployed_app_link}}</h3>
+
+<br>
+
+<a href="{% url 'new_review' project.id %}" class="joshbtn">Review This Project</a>
+
+<a href="{% url 'consolidated_review' project.id %}" class="joshbtn">Consolidate Reviews</a>
+<a href="{% url 'update_project' project.id %}" class="joshbtn">update project</a>
 
 {% endblock %}

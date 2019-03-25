@@ -35,15 +35,17 @@ class New_Project(CreateView):
     fields= '__all__'
 
 
+
 # Loads upon submit of New_Project form
 class Add_Technology(CreateView):
     model = Technology
     fields= ['tech1', 'tech2', 'tech3', 'tech4', 'tech4', 'tech5', 'tech6', 'tech7', 'tech8', 'tech9', 'tech10']
+
     def form_valid (self, form):
         form.instance.project = project = Project.objects.get(id=self.kwargs.get('pk'))
         return super(Add_Technology, self).form_valid(form)
         return reverse('image', kwargs={'pk': form.instance.project.id})
-
+    
 
 # Loads upon submit of Add_Technology form
 class Add_Image(CreateView):
@@ -103,10 +105,10 @@ def signup(request):
 class User_Details(CreateView):
     model = User_Details
     fields = ['first', 'last', 'email', 'specialty', 'cohort_date', 'git_hub_link', 'linkedin_link', 'portfolio_link']
-    def form_valid (self, form):
-        form.instance.user = self.request.user.id
-        return super(User_Details, self).form_valid(form)
-        return reverse('gallery')
+    # def form_valid (self, form):
+    #     form.instance.user = self.request.user.id
+    #     return super(User_Details, self).form_valid(form)
+    #     return reverse('gallery')
 
 # Complicated. Lets users search for their cohort, then select a class member and add them to a project. From owner detail page, redirects to owner detail page. Limit to logged in
 def add_new_teammate(request, project_id, username):

@@ -278,3 +278,8 @@ li.projects {
   border-radius: 10px;
   border: 1px solid #000000;
 }
+
+.joshbtn {
+  border: 1px solid white;
+  color: pink;
+}
